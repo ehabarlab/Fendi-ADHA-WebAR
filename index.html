@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<script type="text/javascript">
+  function SelectShoeIndex() {
+    const modelViewer = document.querySelector("model-viewer");
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let token =0; //urlParams.get('id')
+    console.log(token);
+    if (token == "0") {
+      document.title = "Fendi - ADHA";
+      modelViewer.src = './Models/Bag_Nude.glb'
+    //  modelViewer.iosSrc = './android/Bag_Nude.glb'//'./IOS/Bag_Nude.usdz'
+      modelViewer.poster = './Banner.png'
+    }
+    /*
+    else if (token == "1") {
+      document.title = "ModelViewer - CLOUD"
+      modelViewer.src = './android/Cloud.glb'
+      modelViewer.iosSrc = './IOS/Cloud.usdz'
+      modelViewer.poster = './CloudPoster.png'
+    }
+    else if (token == "2") {
+      document.title = "ModelViewer - LAVA"
+      modelViewer.src = './android/Lava.glb'
+      modelViewer.iosSrc = './IOS/Lava.usdz'
+      modelViewer.poster = './LavaPoster.png'
+    }
+    else if (token == "3") {
+      document.title = "ModelViewer - FOREST"
+      modelViewer.src = './android/Forest.glb'
+      modelViewer.iosSrc = './IOS/Forest.usdz'
+      modelViewer.poster = './ForestPoster.png'
+    }
+      */
+    document.getElementById('TryOnBtn').onclick = function (e) {
+      // window.open("/VivoTryOn/index.html", "_self");
+      //history.back();
+    //  window.close();
+    alert("Test JS Callback");
+    };
+  }
+
+</script>
+
+<head>
+  <link rel="icon" href="./favicon.ico">
+
+  <style>
+    #TryOnBtn {
+      border-radius: 50% 50% 50% 50%;
+      background-image: url('./TRY-ON.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: local;
+      background-size: contain;
+      width: 80px;
+      height: 80px;
+      top: 100px;
+      position: fixed;
+      right: 10px;
+      border: 0 none white;
+      z-index: 1;
+    }
+  </style>
+  <title id="title">&lt;model-viewer&gt; template</title>
+  <meta charset="utf-8">
+  <meta name="description" content="&lt;model-viewer&gt; template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" href="./styles.css" rel="stylesheet" />
+  <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+</head>
+
+<body onload="SelectShoeIndex()">
+
+  <button type="button" id="TryOnBtn"></button>
+  <!-- <model-viewer> HTML element -->
+  <model-viewer ar ar-modes="quick-look scene-viewer webxr " camera-controls shadow-intensity="1">
+    <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+      View in your space
+    </button>
+    <div id="ar-prompt">
+      <img src="ar_hand_prompt.png">
+    </div>
+  </model-viewer>
+  <script src="script.js"></script>
+  <!-- Loads <model-viewer> for browsers: -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</body>
+
+</html>
